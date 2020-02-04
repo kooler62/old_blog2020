@@ -11,7 +11,7 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::where('active', 1)->paginate(10);
         return PostResource::collection($posts);
     }
 

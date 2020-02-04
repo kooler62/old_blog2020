@@ -11,7 +11,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::where('active', 1)->paginate(10);
         return CategoryResource::collection($categories);
     }
 
