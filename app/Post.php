@@ -21,4 +21,10 @@ class Post extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function scopeApiPublicPosts($query)
+    {
+        return $query->whereActive(1)->select([
+            'id', 'title', 'slug', 'img', 'alt_img', 'description', 'views', 'category_id', 'author_id', 'created_at']);
+    }
 }
