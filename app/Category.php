@@ -15,4 +15,10 @@ class Category extends Model
     {
         return $this->hasMany(Post::class, 'category_id');
     }
+
+    public function scopeApiPublicCategories($query)
+    {
+        return $query->whereActive(1)
+            ->select(['id', 'title', 'slug', 'img', 'alt_img', 'text', 'position']);
+    }
 }
