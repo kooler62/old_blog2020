@@ -7,16 +7,16 @@ use Faker\Generator as Faker;
 
 $factory->define(Post::class, function (Faker $faker) {
     return [
-        'title'           => $slug = $faker->sentence($nbWords = 5, $variableNbWords = true),
+        'title'           => $slug = $faker->sentence(),
         'slug'            => $slug,
         'img'             => $faker->imageUrl(),
-        'alt_img'         => $faker->sentence($nbWords = 5, $variableNbWords = true),
+        'alt_img'         => $faker->sentence(),
         'category_id'     => Category::all()->random()->id,
         'author_id'       => User::all()->random()->id,
         'active'          => rand(0, 1),
         'description'     => $faker->text(190),
         'seo_description' => $faker->text(190),
         'seo_keywords'    => $faker->text(190),
-        'text'            => $faker->text(190),
+        'text'            => $faker->text(10000),
     ];
 });
