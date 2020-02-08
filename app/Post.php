@@ -19,8 +19,37 @@ class Post extends Model
 
     public function author(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'author_id','id');
     }
+
+    public function scopePublicPosts($query)
+    {
+        return $query
+            //->with(['category', 'tags'])
+            #или так -выбираем конкертные поля
+            /*
+          ->with([
+              'category'=> function($query){
+                  $query->select(['id', 'slug', 'title']);
+              }
+
+          ])
+          */
+            #или так
+            ->select('id', 'slug', 'title', 'views', 'category_id', 'author_id', 'img', 'alt_img', 'description', 'created_at')
+
+            ->with([
+                'category:id,slug,title',
+                'author:id,name,avatar',
+
+            ])
+
+            ->whereActive(1)
+            ->whereHas('category', function($query) {$query->whereActive(1);})
+            ->orderBy('created_at', 'desc')
+            ->orderBy('id', 'desc');
+    }
+
 
     public function scopeApiPublicPosts($query)
     {

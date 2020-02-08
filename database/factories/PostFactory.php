@@ -3,13 +3,14 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use App\{Post, Category, User};
+use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 
 $factory->define(Post::class, function (Faker $faker) {
     return [
         'title'           => $slug = $faker->sentence(),
-        'slug'            => $slug,
-        'img'             => $faker->imageUrl(),
+        'slug'            => Str::slug($slug),
+        'img'             => 'fake_images/'.rand(1, 9).'.webp',
         'alt_img'         => $faker->sentence(),
         'category_id'     => Category::all()->random()->id,
         'author_id'       => User::all()->random()->id,
