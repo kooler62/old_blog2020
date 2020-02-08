@@ -16,6 +16,7 @@ $factory->define(Category::class, function (Faker $faker) {
         'alt_img'         => $faker->sentence(),
         'seo_description' => $faker->text(190),
         'seo_keywords'    => $faker->text(190),
+        'description'     => $faker->text(190),
         'text'            => $faker->text(600),
         'keywords'        => $faker->text(190),
     ];

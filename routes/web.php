@@ -14,3 +14,5 @@
 Route::get('', 'PostController@index')->name('home');
 Route::get('posts/{slug}', 'PostController@show')->name('posts.show');
 
+Route::get('categories', 'CategoryController@index')->name('categories');
+Route::get('categories/{slug}', 'CategoryController@show')->name('categories.show');

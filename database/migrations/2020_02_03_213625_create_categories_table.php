@@ -21,6 +21,7 @@ class CreateCategoriesTable extends Migration
             $table->string('alt_img')->nullable();
             $table->string('seo_description')->nullable();
             $table->string('seo_keywords')->nullable();
+            $table->text('description')->nullable();
             $table->text('text')->nullable();
             $table->string('keywords')->nullable();
             $table->boolean('active')->nullable();
