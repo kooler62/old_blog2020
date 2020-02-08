@@ -21,6 +21,6 @@ class PostController extends Controller
         });
 
         $post->increment('views');
-        return view('blog.post', compact('post'));
+        return view('single_post', compact('post'));
     }
 }

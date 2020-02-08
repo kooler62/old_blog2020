@@ -1,6 +1,12 @@
 <div class="site-section bg-light">
     <div class="container">
 
+        <div class="row mb-5">
+            <div class="col-12">
+                <h2>More Related Posts</h2>
+            </div>
+        </div>
+
         <div class="row align-items-stretch retro-layout">
 
             <div class="col-md-5 order-md-2">

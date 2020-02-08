@@ -37,6 +37,17 @@ class Post extends Model
             ->orderBy('id', 'desc');
     }
 
+    public function scopePublicPost($query)
+    {
+        return $query
+            ->with([
+                'category:id,slug,title',
+                'author:id,name,avatar',
+            ])
+            ->whereActive(1)
+            ->whereHas('category', function($query) {$query->whereActive(1);});
+    }
+
     public function scopeApiPublicPosts($query)
     {
         return $query->whereActive(1)->select([
