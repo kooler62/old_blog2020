@@ -19,7 +19,8 @@ use Illuminate\Support\Str;
 
 $factory->define(User::class, function (Faker $faker) {
     return [
-        'name'              => $faker->name,
+        'name'              => $slug = $faker->name,
+        'slug'              => Str::slug($slug),
         'email'             => $faker->unique()->safeEmail,
         'avatar'            => 'fake_avatars/'.rand(1, 7).'.webp',
         'description'       => $faker->text(190),

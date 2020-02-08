@@ -28,7 +28,7 @@ class Post extends Model
             ->select('id', 'slug', 'title', 'views', 'category_id', 'author_id', 'img', 'alt_img', 'description', 'created_at')
             ->with([
                 'category:id,slug,title',
-                'author:id,name,avatar',
+                'author:id,name,avatar,slug',
             ])
 
             ->whereActive(1)
@@ -42,7 +42,7 @@ class Post extends Model
         return $query
             ->with([
                 'category:id,slug,title',
-                'author:id,name,avatar',
+                'author:id,name,avatar,slug',
             ])
             ->whereActive(1)
             ->whereHas('category', function($query) {$query->whereActive(1);});
