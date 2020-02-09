@@ -14,15 +14,12 @@
                     <li><a href="#">Subscribes</a></li>
                 </ul>
                 <ul class="list-unstyled float-left">
-                    <li><a href="#">Travel</a></li>
-                    <li><a href="#">Lifestyle</a></li>
-                    <li><a href="#">Sports</a></li>
-                    <li><a href="#">Nature</a></li>
+                    @foreach(\App\Category::headerCategories() as $category)
+                        <li><a href="{{ route('categories.show', $category->slug) }}">{{ $category->title }}</a></li>
+                    @endforeach
                 </ul>
             </div>
             <div class="col-md-4">
-
-
                 <div>
                     <h3 class="footer-heading mb-4">Connect With Us</h3>
                     <p>
@@ -38,9 +35,7 @@
         <div class="row">
             <div class="col-12 text-center">
                 <p>
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    Copyright © <script>document.write(new Date().getFullYear());</script>2020 All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    Copyright © 2020 All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by k62
                 </p>
             </div>
         </div>

@@ -16,12 +16,9 @@
             <div class="col-8 text-right">
                 <nav class="site-navigation" role="navigation">
                     <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block mb-0">
-                        <li><a href="category.html">Home</a></li>
-                        <li><a href="category.html">Politics</a></li>
-                        <li><a href="category.html">Tech</a></li>
-                        <li><a href="category.html">Entertainment</a></li>
-                        <li><a href="category.html">Travel</a></li>
-                        <li><a href="category.html">Sports</a></li>
+                        @foreach(\App\Category::headerCategories() as $category)
+                            <li><a href="{{ route('categories.show', $category->slug) }}">{{ $category->title }}</a></li>
+                        @endforeach
                         <li class="d-none d-lg-inline-block"><a href="#" class="js-search-toggle"><span class="icon-search"></span></a></li>
                     </ul>
                 </nav>

@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 
 $factory->define(Category::class, function (Faker $faker) {
     return [
-        'title'           => $slug = $faker->sentence(),
+        'title'           => $slug = $faker->sentence(2),
         'slug'            => Str::slug($slug),
         'active'          => rand(0, 1),
         'position'        => $faker->numberBetween(1, 10),

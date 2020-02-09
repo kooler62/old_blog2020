@@ -11,6 +11,12 @@ class Category extends Model
         'title', 'slug', 'img', 'alt_img', 'seo_description', 'seo_keywords', 'description', 'text', 'keywords', 'active', 'position'
     ];
 
+    public function scopeHeaderCategories($query){
+        $categories = cache()->remember('categories', now()->addDays(30), function () use ($query)  {
+            return $query->whereActive(1)->orderBy('position')->select(['id', 'title', 'slug'])->get();
+        });
+        return $categories;
+    }
     public function posts(): HasMany
     {
         return $this->hasMany(Post::class, 'category_id');
