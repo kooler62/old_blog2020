@@ -1,5 +1,11 @@
 @extends('layouts.single_post_lay')
 
+@section('title', $post->title)
+
+@section('header_seo')
+    <meta name="description" content="{{ $post->seo_description }}">
+@endsection
+
 @section('post')
     <div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url({{ asset($post->img) }});">
         <div class="container">

@@ -1,5 +1,11 @@
 @extends('layouts.categories_lay')
 
+@section('title', 'Categories')
+
+@section('header_seo')
+    <meta name="description" content="categories">
+@endsection
+
 @section('categories')
     @foreach($categories as $category)
         <div class="col-lg-4 mb-4">

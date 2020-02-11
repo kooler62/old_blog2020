@@ -1,7 +1,8 @@
 <head>
-    <title>Mini Blog</title>
+    <title>@yield('title', 'Blog2020')</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+@yield('header_seo')
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700|Playfair+Display:400,700,900" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('fonts/icomoon/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
@@ -14,7 +15,5 @@
     <link rel="stylesheet" href="{{ asset('css/aos.css') }}">
 
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    @section('header_scripts')
-    @endsection()
-
+@yield('header_scripts')
 </head>

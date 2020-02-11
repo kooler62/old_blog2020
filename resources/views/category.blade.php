@@ -1,5 +1,11 @@
 @extends('layouts.category_lay')
 
+@section('title', $category->title)
+
+@section('header_seo')
+    <meta name="description" content="{{ $category->seo_description }}">
+@endsection
+
 @section('category')
     <div class="py-5 bg-light">
         <div class="container">

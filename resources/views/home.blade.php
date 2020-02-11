@@ -1,5 +1,11 @@
 @extends('layouts.home_lay')
 
+@section('title', 'Blog home')
+
+@section('header_seo')
+    <meta name="description" content="Blog2020 posts">
+@endsection
+
 @section('post')
 
 @foreach($posts as $post)
