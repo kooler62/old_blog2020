@@ -48,9 +48,16 @@ class Post extends Model
             ->whereHas('category', function($query) {$query->whereActive(1);});
     }
 
-    public function scopeApiPublicPosts($query)
+    public function scopeApiV1PublicPosts($query)
     {
-        return $query->whereActive(1)->select([
-            'id', 'title', 'slug', 'img', 'alt_img', 'description', 'views', 'category_id', 'author_id', 'created_at']);
+        return $query->whereActive(1)
+            ->select(['id', 'title', 'slug', 'img', 'alt_img', 'description', 'views', 'category_id', 'author_id', 'created_at']);
+    }
+
+    public function scopeApiV1PublicPost($query, int $id)
+    {
+        return $query->whereActive(1)
+            ->select(['id', 'title', 'slug', 'img', 'alt_img','seo_description','seo_keywords', 'text', 'views', 'category_id', 'author_id', 'created_at'])
+            ->findOrFail($id);
     }
 }

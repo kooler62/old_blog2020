@@ -3,19 +3,17 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\v1\PostResource;
 use App\Post;
 
 class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::apiPublicPosts()->paginate(10);
-        return PostResource::collection($posts);
+        return Post::apiV1PublicPosts()->paginate(10);
     }
 
     public function show(Post $post)
     {
-        return new PostResource($post);
+        return Post::apiV1PublicPost($post->id);
     }
 }

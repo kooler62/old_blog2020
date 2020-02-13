@@ -42,4 +42,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Post::class, 'author_id');
     }
+
+    public function scopeApiV1Authors($query)
+    {
+        return $query->select(['id', 'name', 'slug', 'avatar']);
+    }
+
+    public function scopeApiV1Author($query, int $id)
+    {
+        return $query->select(['id', 'name', 'slug', 'email', 'avatar', 'description'])->findOrFail($id);
+    }
 }

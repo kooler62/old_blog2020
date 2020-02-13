@@ -12,7 +12,10 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::group(['prefix' => 'v1', 'namespace' => 'Api\v1'], function () {
+Route::get('', 'Api\ApiController@index')->name('api');
+Route::get('v1', 'Api\ApiController@v1')->name('api.v1');
+
+Route::group(['prefix' => 'v1', 'namespace' => 'Api\v1', 'as' => 'api.'], function () {
     Route::resource('authors', 'UserController')->only(['index', 'show']);
     Route::resource('categories', 'CategoryController')->only(['index', 'show']);
     Route::resource('posts', 'PostController')->only(['index', 'show']);
