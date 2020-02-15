@@ -9,11 +9,17 @@ class UserController extends Controller
 {
     public function index()
     {
-        return User::apiV1Authors()->paginate(10);
+        $authors = cache()->remember('api_v1_authors', now()->addMinutes(60), function(){
+            return User::apiV1Authors()->paginate(10);
+        });
+        return $authors;
     }
 
     public function show(int $id)
     {
-        return Category::apiV1Author($id);
+        $author = cache()->remember('api_v1_author-' . $id, now()->addMinutes(60), function() use ($id){
+            return User::apiV1Author($id);
+        });
+        return $author;
     }
 }

@@ -9,11 +9,17 @@ class PostController extends Controller
 {
     public function index()
     {
-        return Post::apiV1PublicPosts()->paginate(10);
+        $posts = cache()->remember('api_v1_posts-' . request()->page, now()->addMinutes(60), function(){
+            return Post::apiV1PublicPosts()->paginate(10);
+        });
+        return $posts;
     }
 
     public function show(Post $post)
     {
-        return Post::apiV1PublicPost($post->id);
+        $post = cache()->remember('api_v1_post-' . $post->id, now()->addMinutes(60), function() use ($post){
+            return Post::apiV1PublicPost($post->id);
+        });
+        return $post;
     }
 }
