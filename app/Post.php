@@ -12,6 +12,11 @@ class Post extends Model
         'category_id', 'author_id',
     ];
 
+    public function getImgAttribute($value)
+    {
+        return asset($value);
+    }
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
@@ -57,7 +62,26 @@ class Post extends Model
     public function scopeApiV1PublicPost($query, int $id)
     {
         return $query->whereActive(1)
-            ->select(['id', 'title', 'slug', 'img', 'alt_img','seo_description','seo_keywords', 'text', 'views', 'category_id', 'author_id', 'created_at'])
+            ->select(['id', 'title', 'slug', 'img', 'alt_img', 'seo_description', 'seo_keywords', 'text', 'views', 'category_id', 'author_id', 'created_at'])
+            ->findOrFail($id);
+    }
+
+    public function scopeApiV2PublicPosts($query)
+    {
+        return $query->whereActive(1)->with([
+            'category:id,slug,title',
+            'author:id,name,avatar,slug',
+            ])
+            ->select(['id', 'title', 'slug', 'img', 'alt_img', 'description', 'views', 'category_id', 'author_id', 'created_at']);
+    }
+    public function scopeApiV2PublicPost($query, int $id)
+    {
+        return $query->whereActive(1)
+            ->with([
+                'category:id,slug,title',
+                'author:id,name,avatar,slug',
+            ])
+            ->select(['id', 'title', 'slug', 'img', 'alt_img', 'seo_description', 'seo_keywords', 'views', 'category_id', 'author_id', 'text', 'created_at'])
             ->findOrFail($id);
     }
 }

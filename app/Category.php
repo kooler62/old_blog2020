@@ -11,6 +11,11 @@ class Category extends Model
         'title', 'slug', 'img', 'alt_img', 'seo_description', 'seo_keywords', 'description', 'text', 'keywords', 'active', 'position'
     ];
 
+    public function getImgAttribute($value)
+    {
+        return asset($value);
+    }
+
     public function scopeHeaderCategories($query){
         $categories = cache()->remember('categories', now()->addDays(30), function () use ($query)  {
             return $query->whereActive(1)->orderBy('position')->select(['id', 'title', 'slug'])->get();
@@ -31,7 +36,20 @@ class Category extends Model
     public function scopeApiV1PublicCategory($query, int $id)
     {
         return $query->whereActive(1)
-            ->select(['id', 'title', 'slug', 'img', 'alt_img','seo_description','seo_keywords', 'text'])
+            ->select(['id', 'title', 'slug', 'img', 'alt_img', 'seo_description', 'seo_keywords', 'text'])
+            ->findOrFail($id);
+    }
+
+    public function scopeApiV2PublicCategories($query)
+    {
+        return $query->whereActive(1)
+            ->select(['id', 'title', 'slug', 'img', 'alt_img', 'text', 'position']);
+    }
+
+    public function scopeApiV2PublicCategory($query, int $id)
+    {
+        return $query->whereActive(1)->with('posts')
+            ->select(['id', 'title', 'slug', 'img', 'alt_img', 'seo_description', 'seo_keywords', 'text'])
             ->findOrFail($id);
     }
 }

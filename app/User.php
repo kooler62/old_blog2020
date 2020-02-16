@@ -38,6 +38,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function getAvatarAttribute($value)
+    {
+        return asset($value);
+    }
+
     public function posts(): HasMany
     {
         return $this->hasMany(Post::class, 'author_id');
