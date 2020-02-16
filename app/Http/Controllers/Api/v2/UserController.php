@@ -3,20 +3,23 @@
 namespace App\Http\Controllers\Api\v2;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Http\Resources\v2\UserResource;
 use App\User;
 
 class UserController extends Controller
 {
     public function index()
     {
-        $users = User::paginate(10);
-        return UserResource::collection($users);
+        $authors = cache()->remember('api_v1_authors', now()->addMinutes(60), function(){
+            return User::apiV1Authors()->paginate(10);
+        });
+        return $authors;
     }
 
-    public function show(User $user)
+    public function show(int $id)
     {
-        return new UserResource($user);
+        $author = cache()->remember('api_v1_author-' . $id, now()->addMinutes(60), function() use ($id){
+            return User::apiV1Author($id);
+        });
+        return $author;
     }
 }

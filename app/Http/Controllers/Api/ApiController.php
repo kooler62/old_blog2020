@@ -26,7 +26,7 @@ class ApiController extends Controller
     public function v2()
     {
         return response()->json([
-            //'authors' => route('api.authors.index'),
+            'authors' => route('api.v2.authors.index'),
             'categories' => route('api.v2.categories.index'),
             'posts' => route('api.v2.posts.index'),
         ]);

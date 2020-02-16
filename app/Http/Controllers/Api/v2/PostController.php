@@ -3,20 +3,23 @@
 namespace App\Http\Controllers\Api\v2;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\v2\PostResource;
-use Illuminate\Http\Request;
 use App\Post;
 
 class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::apiPublicPosts()->paginate(10);
-        return PostResource::collection($posts);
+        $posts = cache()->remember('api_v2_posts-' . request()->page, now()->addMinutes(60), function(){
+            return Post::apiV2PublicPosts()->paginate(10);
+        });
+        return $posts;
     }
 
     public function show(Post $post)
     {
-        return new PostResource($post);
+        $post = cache()->remember('api_v2_post-' . $post->id, now()->addMinutes(60), function() use ($post){
+            return Post::apiV2PublicPost($post->id);
+        });
+        return $post;
     }
 }
