@@ -10,7 +10,7 @@
     @foreach($authors as $author)
         <div class="col-md-6 col-lg-4 mb-5 text-center">
             <a href="{{ route('authors.show', $author->slug) }}">
-                <img src="{{ asset($author->avatar) }}" alt="Image" class="img-fluid w-50 rounded-circle mb-4">
+                <img src="{{ $author->avatar }}" alt="Image" class="img-fluid w-50 rounded-circle mb-4">
             </a>
             <a href="{{ route('authors.show', $author->slug) }}"> <h2 class="mb-3 h5">{{ $author->name }}</h2></a>
             <p>{{ $author->description }}</p>

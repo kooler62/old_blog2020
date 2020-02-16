@@ -7,7 +7,7 @@
 @endsection
 
 @section('post')
-    <div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url({{ asset($post->img) }});">
+    <div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url({{ $post->img }});">
         <div class="container">
             <div class="row same-height justify-content-center">
                 <div class="col-md-12 col-lg-10">
@@ -19,7 +19,7 @@
                         <div class="post-meta align-items-center text-center">
                             <figure class="author-figure mb-0 mr-3 d-inline-block">
                                 <a href="{{ route('authors.show', $post->author->slug) }}">
-                                    <img src="{{ asset($post->author->avatar) }}" alt="Image" class="img-fluid">
+                                    <img src="{{ $post->author->avatar }}" alt="Image" class="img-fluid">
                                 </a>
                             </figure>
                             <span class="d-inline-block mt-1">By <a href="{{ route('authors.show', $post->author->slug) }}">{{ $post->author->name }} </a></span>
