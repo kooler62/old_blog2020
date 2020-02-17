@@ -10,7 +10,7 @@ class AuthorController extends Controller
     {
         //TODO юзер у которо количество активных постов больше 0
         $authors = cache()->remember('authors', now()->addMinutes(60), function(){
-            return User::paginate(50);
+            return User::paginate(30);
         });
 
         return view('authors', compact('authors'));
@@ -23,7 +23,7 @@ class AuthorController extends Controller
         });
 
         $posts = cache()->remember("author_posts-$slug-".request()->page, now()->addMinutes(60), function() use($author){
-            return Post::publicPosts()->where('author_id', $author->id)->paginate(10);
+            return Post::publicPosts()->where('author_id', $author->id)->paginate(15);
         });
 
         return view('author', compact('author', 'posts'));

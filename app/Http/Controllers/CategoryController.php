@@ -9,7 +9,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = cache()->remember('categories', now()->addDays(30), function () {
-            return Category::whereActive(1)->paginate(50);
+            return Category::whereActive(1)->paginate(30);
         });
         return view('categories', compact('categories'));
     }
@@ -21,7 +21,7 @@ class CategoryController extends Controller
         });
 
         $posts = cache()->remember("category_posts-$slug-".request()->page, now()->addMinutes(60), function() use($category){
-            return Post::publicPosts()->where('category_id', $category->id)->paginate(10);
+            return Post::publicPosts()->where('category_id', $category->id)->paginate(15);
         });
         return view('category', compact('category', 'posts'));
     }

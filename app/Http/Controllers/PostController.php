@@ -9,7 +9,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = cache()->remember('posts-' . request()->page, now()->addMinutes(60), function(){
-            return Post::publicPosts()->paginate(10);
+            return Post::publicPosts()->paginate(15);
         });
         return view('home', compact('posts'));
     }
