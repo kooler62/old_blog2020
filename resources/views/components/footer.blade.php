@@ -11,6 +11,7 @@
                     <li><a href="/">Home</a></li>
                     <li><a href="{{ route('categories') }}">Categories</a></li>
                     <li><a href="{{ route('authors') }}">Authors</a></li>
+                    <li><a href="{{ route('api') }}">Api</a></li>
                 </ul>
                 <ul class="list-unstyled float-left">
                     @foreach(\App\Category::headerCategories() as $category)
