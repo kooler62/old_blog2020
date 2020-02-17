@@ -10,7 +10,11 @@ class ApiController extends Controller
     {
         return response()->json([
             'v1' => route('api.v1'),
-            'v2' => route('api.v2')
+            'v2' => route('api.v2'),
+            'graphQL' => [
+                route('graphql'),
+                route('graphql-playground')
+            ]
         ]);
     }
 
