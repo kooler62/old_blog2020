@@ -26,7 +26,7 @@ $mostViewedPosts = App\Post::mostViewedPosts();
             <div class="col-md-7">
 
                 <a href="{{ route('posts.show', $mostViewedPosts[1]->slug) }}" class="hentry img-2 v-height mb30 gradient" style="background-image: url('{{ $mostViewedPosts[1]->img }}');">
-                    <span class="post-category text-white bg-success">{{ $mostViewedPosts[1]->category->title }}</span>
+                    <span class="post-category text-white bg-{{ $mostViewedPosts[1]->category->class }}">{{ $mostViewedPosts[1]->category->title }}</span>
                     <div class="text text-sm">
                         <h2>{{ $mostViewedPosts[1]->title }}</h2>
                         <span>👁 {{ $mostViewedPosts[1]->views }}</span>
@@ -35,14 +35,14 @@ $mostViewedPosts = App\Post::mostViewedPosts();
 
                 <div class="two-col d-block d-md-flex">
                     <a href="{{ route('posts.show', $mostViewedPosts[2]->slug) }}" class="hentry v-height img-2 gradient" style="background-image: url('{{ $mostViewedPosts[2]->img }}');">
-                        <span class="post-category text-white bg-primary">{{ $mostViewedPosts[2]->category->title }}</span>
+                        <span class="post-category text-white bg-{{ $mostViewedPosts[2]->category->class }}">{{ $mostViewedPosts[2]->category->title }}</span>
                         <div class="text text-sm">
                             <h2>{{ $mostViewedPosts[2]->title }}</h2>
                             <span>👁 {{ $mostViewedPosts[2]->views }}</span>
                         </div>
                     </a>
                     <a href="{{ route('posts.show', $mostViewedPosts[3]->slug) }}" class="hentry v-height img-2 ml-auto gradient" style="background-image: url('{{ $mostViewedPosts[3]->img }}');">
-                        <span class="post-category text-white bg-warning">{{ $mostViewedPosts[3]->category->title }}</span>
+                        <span class="post-category text-white bg-{{ $mostViewedPosts[3]->category->class }}">{{ $mostViewedPosts[3]->category->title }}</span>
                         <div class="text text-sm">
                             <h2>{{ $mostViewedPosts[3]->title }}</h2>
                             <span>👁 {{ $mostViewedPosts[3]->views }}</span>

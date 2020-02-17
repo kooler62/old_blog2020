@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Post extends Model
 {
     protected $fillable = [
-        'title', 'slug', 'img', 'alt_img', 'seo_description', 'seo_keywords', 'description', 'text', 'active', 'views',
+        'title', 'slug', 'class', 'color', 'img', 'alt_img', 'seo_description', 'seo_keywords', 'description', 'text', 'active', 'views',
         'category_id', 'author_id',
     ];
 
@@ -32,7 +32,7 @@ class Post extends Model
         return $query
             ->select('id', 'slug', 'title', 'views', 'category_id', 'author_id', 'img', 'alt_img', 'description', 'created_at')
             ->with([
-                'category:id,slug,title',
+                'category:id,slug,title,class,color',
                 'author:id,name,avatar,slug',
             ])
 
@@ -46,7 +46,7 @@ class Post extends Model
     {
         return $query
             ->with([
-                'category:id,slug,title',
+                'category:id,slug,title,class,color',
                 'author:id,name,avatar,slug',
             ])
             ->whereActive(1)
@@ -57,7 +57,7 @@ class Post extends Model
     {
         return $query
             ->with([
-                'category:id,slug,title',
+                'category:id,slug,title,class,color',
                 'author:id,name,avatar,slug',
             ])
             ->select('id', 'slug', 'title', 'views', 'category_id', 'author_id', 'img', 'alt_img', 'description', 'created_at')

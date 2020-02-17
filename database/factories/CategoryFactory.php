@@ -10,6 +10,8 @@ $factory->define(Category::class, function (Faker $faker) {
     return [
         'title'           => $slug = $faker->sentence(2),
         'slug'            => Str::slug($slug),
+        'class'           => $faker->randomElement(['primary', 'warning', 'danger', 'success']),
+        'color'           => $faker->safeColorName,
         'active'          => rand(0, 1),
         'position'        => $faker->numberBetween(1, 10),
         'img'             => 'fake_images/'.rand(1, 9).'.webp',

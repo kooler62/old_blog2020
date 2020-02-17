@@ -13,7 +13,7 @@
                 <div class="col-md-12 col-lg-10">
                     <div class="post-entry text-center">
                         <a href="{{ route('categories.show', $post->category->slug) }}">
-                            <span class="post-category text-white bg-success mb-3">{{ $post->category->title }}</span>
+                            <span class="post-category text-white bg-{{ $post->category->class }} mb-3">{{ $post->category->title }}</span>
                         </a>
                         <h1 class="mb-4"><a href="#">{{ $post->title }}</a></h1>
                         <div class="post-meta align-items-center text-center">

@@ -14,7 +14,7 @@
             <a href="{{ route('posts.show', $post->slug) }}"><img src="{{ $post->img }}" alt="{{ $post->alt_img }}" class="img-fluid rounded"></a>
             <div class="excerpt">
                 <a href="{{ route('categories.show', $post->category->slug) }}">
-                    <span class="post-category text-white bg-success mb-3">{{ $post->category->title }}</span>
+                    <span class="post-category text-white bg-{{ $post->category->class }} mb-3">{{ $post->category->title }}</span>
                 </a>
                 <h2><a href="{{ route('posts.show', $post->slug) }}">{{ $post->title }}</a></h2>
                 <div class="post-meta align-items-center text-left clearfix">
