@@ -16,7 +16,7 @@
                     <p>{{ $category->text }}</p>
                 </div>
                 <div class="col-md-6">
-                    <img src="{{ $category->img }}" alt="{{ $category->alt_img }}">
+                    <img src="{{ $category->img }}" width="100%" alt="{{ $category->alt_img }}">
                 </div>
             </div>
         </div>
