@@ -4,7 +4,7 @@
 
             <div class="col-12 search-form-wrap js-search-form">
                 <form method="get" action="#">
-                    <input type="text" id="s" class="form-control" placeholder="Search...">
+{{--                    <input type="text" id="s" class="form-control" placeholder="Search...">--}}
 {{--                    <button class="search-btn" type="submit"><span class="icon-search"></span></button>--}}
                 </form>
             </div>
@@ -19,7 +19,7 @@
                         @foreach(\App\Category::headerCategories() as $headerCategory)
                             <li><a href="{{ route('categories.show', $headerCategory->slug) }}">{{ $headerCategory->title }}</a></li>
                         @endforeach
-                        <li class="d-none d-lg-inline-block"><a href="#" class="js-search-toggle"><span class="icon-search"></span></a></li>
+{{--                        <li class="d-none d-lg-inline-block"><a href="#" class="js-search-toggle"><span class="icon-search"></span></a></li>--}}
                     </ul>
                 </nav>
                 <a href="#" class="site-menu-toggle js-menu-toggle text-black d-inline-block d-lg-none"><span class="icon-menu h3"></span></a></div>

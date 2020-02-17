@@ -8,10 +8,9 @@
             <div class="col-md-3 ml-auto">
                 <!-- <h3 class="footer-heading mb-4">Navigation</h3> -->
                 <ul class="list-unstyled float-left mr-5">
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Advertise</a></li>
-                    <li><a href="#">Careers</a></li>
-                    <li><a href="#">Subscribes</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="{{ route('categories') }}">Categories</a></li>
+                    <li><a href="{{ route('authors') }}">Authors</a></li>
                 </ul>
                 <ul class="list-unstyled float-left">
                     @foreach(\App\Category::headerCategories() as $category)
@@ -34,9 +33,7 @@
         </div>
         <div class="row">
             <div class="col-12 text-center">
-                <p>
-                    Copyright © 2020 All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by k62
-                </p>
+                <p>Copyright © 2020 | by K62 with <i class="icon-heart text-danger" aria-hidden="true"></i></p>
             </div>
         </div>
     </div>
