@@ -23,3 +23,7 @@
         </div>
     @endforeach
 @endsection
+
+@section('pagination')
+    {{ $authors->links() }}
+@endsection()

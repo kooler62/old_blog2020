@@ -10,7 +10,7 @@ class AuthorController extends Controller
     {
         //TODO юзер у которо количество активных постов больше 0
         $authors = cache()->remember('authors', now()->addMinutes(60), function(){
-            return User::all();
+            return User::paginate(50);
         });
 
         return view('authors', compact('authors'));

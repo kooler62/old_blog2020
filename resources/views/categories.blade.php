@@ -19,3 +19,7 @@
         </div>
     @endforeach
 @endsection
+
+@section('pagination')
+    {{ $categories->links() }}
+@endsection()

@@ -21,7 +21,7 @@
             <div class="row">
                 @yield('categories')
             </div>
-{{--            @include('components.pagination')--}}
+            @yield('pagination')
         </div>
     </div>
 

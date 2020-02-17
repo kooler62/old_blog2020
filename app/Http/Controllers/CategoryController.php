@@ -9,7 +9,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = cache()->remember('categories', now()->addDays(30), function () {
-            return Category::whereActive(1)->get();
+            return Category::whereActive(1)->paginate(50);
         });
         return view('categories', compact('categories'));
     }

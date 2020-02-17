@@ -32,3 +32,7 @@
 @endforeach
 
 @endsection()
+
+@section('pagination')
+    {{ $posts->links() }}
+@endsection()

@@ -5,7 +5,7 @@
             <div class="col-12 search-form-wrap js-search-form">
                 <form method="get" action="#">
                     <input type="text" id="s" class="form-control" placeholder="Search...">
-                    <button class="search-btn" type="submit"><span class="icon-search"></span></button>
+{{--                    <button class="search-btn" type="submit"><span class="icon-search"></span></button>--}}
                 </form>
             </div>
 
@@ -16,8 +16,8 @@
             <div class="col-8 text-right">
                 <nav class="site-navigation" role="navigation">
                     <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block mb-0">
-                        @foreach(\App\Category::headerCategories() as $category)
-                            <li><a href="{{ route('categories.show', $category->slug) }}">{{ $category->title }}</a></li>
+                        @foreach(\App\Category::headerCategories() as $headerCategory)
+                            <li><a href="{{ route('categories.show', $headerCategory->slug) }}">{{ $headerCategory->title }}</a></li>
                         @endforeach
                         <li class="d-none d-lg-inline-block"><a href="#" class="js-search-toggle"><span class="icon-search"></span></a></li>
                     </ul>

@@ -27,6 +27,7 @@
             <div class="row">
                 @yield('authors')
             </div>
+            @yield('pagination')
         </div>
     </div>
 
