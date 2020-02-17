@@ -11,9 +11,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <span>Category</span>
+                    <span class="post-category text-white bg-{{ $category->class }} mb-3">Category:</span>
                     <h3>{{ $category->title }}</h3>
                     <p>{{ $category->text }}</p>
+                </div>
+                <div class="col-md-6">
+                    <img src="{{ $category->img }}" alt="{{ $category->alt_img }}">
                 </div>
             </div>
         </div>
@@ -26,7 +29,7 @@
             <div class="entry2">
                 <a href="{{ route('posts.show', $post->slug) }}"><img src="{{ $post->img }}" alt="{{ $post->alt_img }}" class="img-fluid rounded"></a>
                 <div class="excerpt">
-                    <span class="post-category text-white bg-secondary mb-3">{{ $post->category->title }}</span>
+                    <span class="post-category text-white bg-{{ $post->category->class }} mb-3">{{ $post->category->title }}</span>
 
                     <h2><a href="{{ route('posts.show', $post->slug) }}">{{ $post->title }}</a></h2>
                     <div class="post-meta align-items-center text-left clearfix">

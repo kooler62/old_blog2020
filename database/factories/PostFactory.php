@@ -10,7 +10,7 @@ $factory->define(Post::class, function (Faker $faker) {
     return [
         'title'           => $slug = $faker->sentence(),
         'slug'            => Str::slug($slug),
-        'img'             => 'fake_images/'.rand(1, 9).'.webp',
+        'img'             => 'fake_images/'.rand(1, 33).'.webp',
         'alt_img'         => $faker->sentence(),
         'category_id'     => Category::all()->random()->id,
         'author_id'       => User::all()->random()->id,
