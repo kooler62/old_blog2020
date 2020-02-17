@@ -53,6 +53,19 @@ class Post extends Model
             ->whereHas('category', function($query) {$query->whereActive(1);});
     }
 
+    public function scopeMostViewedPosts($query)
+    {
+        return $query
+            ->with([
+                'category:id,slug,title',
+                'author:id,name,avatar,slug',
+            ])
+            ->select('id', 'slug', 'title', 'views', 'category_id', 'author_id', 'img', 'alt_img', 'description', 'created_at')
+            ->whereActive(1)->orderByDesc('views')->limit(5)
+            ->whereHas('category', function($query) {$query->whereActive(1);})
+            ->get();
+    }
+
     public function scopeApiV1PublicPosts($query)
     {
         return $query->whereActive(1)

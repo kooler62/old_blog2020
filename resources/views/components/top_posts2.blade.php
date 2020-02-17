@@ -3,45 +3,49 @@
 
         <div class="row mb-5">
             <div class="col-12">
-                <h2>More Related Posts</h2>
+                <h2>Most Viewed Posts</h2>
             </div>
         </div>
 
         <div class="row align-items-stretch retro-layout">
-
+@php
+$mostViewedPosts = App\Post::mostViewedPosts();
+//dd($mostViewedPosts[0])
+            @endphp
             <div class="col-md-5 order-md-2">
-                <a href="single.html" class="hentry img-1 h-100 gradient" style="background-image: url('images/img_4.jpg');">
-                    <span class="post-category text-white bg-danger">Travel</span>
+                <a href="{{ route('posts.show', $mostViewedPosts[0]->slug) }}" class="hentry img-1 h-100 gradient" style="background-image: url('{{ $mostViewedPosts[0]->img }}');">
+                    <span class="post-category text-white bg-danger">{{ $mostViewedPosts[0]->category->title }}</span>
+
                     <div class="text">
-                        <h2>The 20 Biggest Fintech Companies In America 2019</h2>
-                        <span>February 12, 2019</span>
+                        <h2>{{ $mostViewedPosts[0]->title }}</h2>
+                        <span>👁 {{ $mostViewedPosts[0]->views }}</span>
                     </div>
                 </a>
             </div>
 
             <div class="col-md-7">
 
-                <a href="single.html" class="hentry img-2 v-height mb30 gradient" style="background-image: url('images/img_1.jpg');">
-                    <span class="post-category text-white bg-success">Nature</span>
+                <a href="{{ route('posts.show', $mostViewedPosts[1]->slug) }}" class="hentry img-2 v-height mb30 gradient" style="background-image: url('{{ $mostViewedPosts[1]->img }}');">
+                    <span class="post-category text-white bg-success">{{ $mostViewedPosts[1]->category->title }}</span>
                     <div class="text text-sm">
-                        <h2>The 20 Biggest Fintech Companies In America 2019</h2>
-                        <span>February 12, 2019</span>
+                        <h2>{{ $mostViewedPosts[1]->title }}</h2>
+                        <span>👁 {{ $mostViewedPosts[1]->views }}</span>
                     </div>
                 </a>
 
                 <div class="two-col d-block d-md-flex">
-                    <a href="single.html" class="hentry v-height img-2 gradient" style="background-image: url('images/img_2.jpg');">
-                        <span class="post-category text-white bg-primary">Sports</span>
+                    <a href="{{ route('posts.show', $mostViewedPosts[2]->slug) }}" class="hentry v-height img-2 gradient" style="background-image: url('{{ $mostViewedPosts[2]->img }}');">
+                        <span class="post-category text-white bg-primary">{{ $mostViewedPosts[2]->category->title }}</span>
                         <div class="text text-sm">
-                            <h2>The 20 Biggest Fintech Companies In America 2019</h2>
-                            <span>February 12, 2019</span>
+                            <h2>{{ $mostViewedPosts[2]->title }}</h2>
+                            <span>👁 {{ $mostViewedPosts[2]->views }}</span>
                         </div>
                     </a>
-                    <a href="single.html" class="hentry v-height img-2 ml-auto gradient" style="background-image: url('images/img_3.jpg');">
-                        <span class="post-category text-white bg-warning">Lifestyle</span>
+                    <a href="{{ route('posts.show', $mostViewedPosts[3]->slug) }}" class="hentry v-height img-2 ml-auto gradient" style="background-image: url('{{ $mostViewedPosts[3]->img }}');">
+                        <span class="post-category text-white bg-warning">{{ $mostViewedPosts[3]->category->title }}</span>
                         <div class="text text-sm">
-                            <h2>The 20 Biggest Fintech Companies In America 2019</h2>
-                            <span>February 12, 2019</span>
+                            <h2>{{ $mostViewedPosts[3]->title }}</h2>
+                            <span>👁 {{ $mostViewedPosts[3]->views }}</span>
                         </div>
                     </a>
                 </div>
