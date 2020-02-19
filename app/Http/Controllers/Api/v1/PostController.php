@@ -20,6 +20,10 @@ class PostController extends Controller
         $post = cache()->remember('api_v1_post-' . $post->id, now()->addMinutes(60), function() use ($post){
             return Post::apiV1PublicPost($post->id);
         });
+
+        $post->increment('views');
+        $post->views = Post::whereId($post->id)->select('views')->first()->views;
+
         return $post;
     }
 }

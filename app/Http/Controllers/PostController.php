@@ -21,6 +21,8 @@ class PostController extends Controller
         });
 
         $post->increment('views');
+        $post->views = Post::whereId($post->id)->select('views')->first()->views;
+
         return view('single_post', compact('post'));
     }
 }
