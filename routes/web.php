@@ -14,8 +14,7 @@
 Route::get('', 'PostController@index')->name('home');
 Route::get('posts/{slug}', 'PostController@show')->name('posts.show');
 
-Route::get('categories', 'CategoryController@index')->name('categories');
-Route::get('categories/{slug}', 'CategoryController@show')->name('categories.show');
-
-Route::get('authors', 'AuthorController@index')->name('authors');
-Route::get('authors/{slug}', 'AuthorController@show')->name('authors.show');
+Route::redirect('', 'posts')->name('home');
+Route::resource('posts', 'CategoryController')->only(['index', 'show']);
+Route::resource('categories', 'CategoryController')->only(['index', 'show']);
+Route::resource('authors', 'AuthorController')->only(['index', 'show']);
