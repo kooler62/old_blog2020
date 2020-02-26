@@ -11,8 +11,11 @@
 |
 */
 
-Route::get('', 'PostController@index')->name('home');
-Route::get('posts/{slug}', 'PostController@show')->name('posts.show');
+Route::group([ 'namespace' => 'Short', 'as' => 'short.'], function () {
+    Route::resource('a', 'AuthorController')->only(['index', 'show'])->parameters([ 'a' => 'author']);
+    Route::resource('c', 'CategoryController')->only(['index', 'show'])->parameters([ 'c' => 'category']);
+    Route::resource('p', 'PostController')->only(['index', 'show'])->parameters([ 'p' => 'post']);
+});
 
 Route::redirect('', 'posts')->name('home');
 Route::resource('posts', 'CategoryController')->only(['index', 'show']);
