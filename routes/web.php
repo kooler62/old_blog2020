@@ -12,9 +12,9 @@
 */
 
 Route::group([ 'namespace' => 'Short', 'as' => 'short.'], function () {
-    Route::resource('a', 'AuthorController')->only(['index', 'show'])->parameters([ 'a' => 'author']);
-    Route::resource('c', 'CategoryController')->only(['index', 'show'])->parameters([ 'c' => 'category']);
-    Route::resource('p', 'PostController')->only(['index', 'show'])->parameters([ 'p' => 'post']);
+    Route::resource('a', 'AuthorController', ['names' => 'authors'])->only(['index', 'show'])->parameters(['a' => 'author']);
+    Route::resource('c', 'CategoryController', ['names' => 'categories'])->only(['index', 'show'])->parameters(['c' => 'category']);
+    Route::resource('p', 'PostController', ['names' => 'posts'])->only(['index', 'show'])->parameters(['p' => 'post']);
 });
 
 Route::redirect('', 'posts')->name('home');
