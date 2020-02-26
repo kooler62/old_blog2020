@@ -18,6 +18,7 @@ Route::group([ 'namespace' => 'Short', 'as' => 'short.'], function () {
 });
 
 Route::redirect('', 'posts')->name('home');
-Route::resource('posts', 'CategoryController')->only(['index', 'show']);
+Route::resource('posts', 'PostController')->only(['index', 'show']);
+//Route::resource('posts', 'PostController', ['parameters'=> ['posts' => 'slug']])->only(['index', 'show']);
 Route::resource('categories', 'CategoryController')->only(['index', 'show']);
 Route::resource('authors', 'AuthorController')->only(['index', 'show']);

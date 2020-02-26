@@ -11,7 +11,7 @@ class PostController extends Controller
         $posts = cache()->remember('posts-' . request()->page, now()->addMinutes(60), function(){
             return Post::publicPosts()->paginate(15);
         });
-        return view('home', compact('posts'));
+        return view('posts', compact('posts'));
     }
 
     public function show(string $slug)
@@ -23,6 +23,6 @@ class PostController extends Controller
         $post->increment('views');
         $post->views = Post::whereId($post->id)->select('views')->first()->views;
 
-        return view('single_post', compact('post'));
+        return view('post', compact('post'));
     }
 }
