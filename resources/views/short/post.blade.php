@@ -1,4 +1,4 @@
-@extends('single_post')
+@extends('post')
 
 @section('header_seo')
     @parent
