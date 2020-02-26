@@ -17,7 +17,7 @@ Route::get('v1', 'Api\ApiController@v1')->name('api.v1');
 Route::get('v2', 'Api\ApiController@v2')->name('api.v2');
 //dingo
 //Route::get('v3', 'Api\ApiController@v3')->name('api.v3');
-Route::group(['prefix' => 'v1', 'namespace' => 'Api\v1', 'as' => 'api.v1.', 'middleware' => ['throttle:120,2', 'cors']], function () {
+Route::group(['prefix' => 'v1', 'namespace' => 'Api\v1', 'as' => 'api.v1.'], function () {
     Route::resource('authors', 'UserController')->only(['index', 'show']);
     Route::resource('categories', 'CategoryController')->only(['index', 'show']);
     Route::resource('posts', 'PostController')->only(['index', 'show']);
