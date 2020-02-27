@@ -33,7 +33,7 @@ class PostController extends Controller
         SEOTools::setDescription($post->seo_description);
         SEOTools::opengraph()
             ->setUrl(route('posts.show', $slug))
-            ->addImage('$post->img');
+            ->addImage($post->img);
         SEOTools::setCanonical(route('posts.show', $slug));
 
         return view('post', compact('post'));
