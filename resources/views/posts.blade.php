@@ -31,8 +31,17 @@
     </div>
 @endforeach
 
+{{--    <button>More</button>--}}
 @endsection()
 
 @section('pagination')
     {{ $posts->links() }}
+@endsection()
+
+@section('footer_scripts')
+{{--    <script>--}}
+{{--       // при нажати на кнопку запрашивать аякз зарос которы2--}}
+{{--        //будет отдавать распарсиный html--}}
+{{--        //будет js рендерить--}}
+{{--    </script>--}}
 @endsection()

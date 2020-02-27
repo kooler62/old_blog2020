@@ -43,9 +43,8 @@
     @show()
 </div>
 
-@section('footer_scripts')
-    @include('components.footer_scripts')
-@show()
+@include('components.footer_scripts')
+@yield('footer_scripts')
 
 </body>
 </html>
