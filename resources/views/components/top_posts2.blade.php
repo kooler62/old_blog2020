@@ -9,9 +9,10 @@
 
         <div class="row align-items-stretch retro-layout">
 @php
-$mostViewedPosts = App\Post::mostViewedPosts();
-//dd($mostViewedPosts[0])
-            @endphp
+    $mostViewedPosts = cache()->remember('mostViewedPosts', now()->addMinutes(5), function(){
+        return App\Post::mostViewedPosts();
+    });
+@endphp
             <div class="col-md-5 order-md-2">
                 <a href="{{ route('posts.show', $mostViewedPosts[0]->slug) }}" class="hentry img-1 h-100 gradient" style="background-image: url('{{ $mostViewedPosts[0]->img }}');">
                     <span class="post-category text-white bg-danger">{{ $mostViewedPosts[0]->category->title }}</span>
