@@ -14,5 +14,6 @@
     <link rel="stylesheet" href="{{ asset('css/aos.css') }}">
 
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    @include('components.metrika')
 @yield('header_scripts')
 </head>
