@@ -11,7 +11,7 @@ class PostController extends Controller
     {
         SEOTools::setTitle('Home');
         SEOTools::setDescription('Blog2020 posts');
-        SEOTools::opengraph()->setUrl('https://blog.lpage.cc');
+        SEOTools::opengraph()->setUrl('https://blog.lpage.cc') ->addImage('https://blog.lpage.cc/images/1.jpg');
         SEOTools::setCanonical('https://blog.lpage.cc');
 
         $posts = cache()->remember('posts-' . request()->page, now()->addMinutes(60), function(){
@@ -33,7 +33,7 @@ class PostController extends Controller
         SEOTools::setDescription($post->seo_description);
         SEOTools::opengraph()
             ->setUrl(route('posts.show', $slug))
-            ->addImage($post->img);
+            ->addImage('https://blog.lpage.cc/images/1.jpg');
         SEOTools::setCanonical(route('posts.show', $slug));
 
         return view('post', compact('post'));
