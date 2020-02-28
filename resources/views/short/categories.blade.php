@@ -1,7 +1,6 @@
 @extends('categories')
 
-@section('header_seo')
-    @parent
+@section('header_scripts')
     <meta name="robots" content="noindex, nofollow"/>
     <meta name="robots" content="none"/>
     <meta name="googlebot" content="noindex, nofollow"/>
