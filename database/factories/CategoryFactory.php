@@ -14,7 +14,7 @@ $factory->define(Category::class, function (Faker $faker) {
         'color'           => $faker->safeColorName,
         'active'          => rand(0, 1),
         'position'        => $faker->numberBetween(1, 10),
-        'img'             => 'fake_images/'.rand(1, 33).'.webp',
+        'img'             => 'fake_images/'.rand(1, 33).'.jpg',
         'alt_img'         => $faker->sentence(),
         'seo_description' => $faker->text(190),
         'seo_keywords'    => $faker->text(190),
