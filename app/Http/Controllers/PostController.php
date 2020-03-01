@@ -38,4 +38,14 @@ class PostController extends Controller
 
         return view('post', compact('post'));
     }
+
+    public function loadPostsAjax(){
+        $page = ( (int) request()->page)? (int) request()->page : 1;
+        $perPage = 15;
+        $offset =  $perPage * $page;
+        $posts = cache()->remember('loaded_posts-' . $page, now()->addMinutes(60), function() use($offset, $perPage){
+            return Post::publicPosts()->offset($offset)->limit($perPage)->get();
+        });
+        return view('parts.load_posts_ajax', compact('posts'));
+    }
 }

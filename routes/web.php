@@ -11,7 +11,7 @@
 |
 */
 
-Route::group([ 'namespace' => 'Short', 'as' => 'short.'], function () {
+Route::group(['namespace' => 'Short', 'as' => 'short.'], function () {
     Route::resource('a', 'AuthorController', ['names' => 'authors'])->only(['index', 'show'])->parameters(['a' => 'author']);
     Route::resource('c', 'CategoryController', ['names' => 'categories'])->only(['index', 'show'])->parameters(['c' => 'category']);
     Route::resource('p', 'PostController', ['names' => 'posts'])->only(['index', 'show'])->parameters(['p' => 'post']);
@@ -20,5 +20,6 @@ Route::group([ 'namespace' => 'Short', 'as' => 'short.'], function () {
 Route::redirect('', 'posts')->name('home');
 Route::resource('posts', 'PostController')->only(['index', 'show']);
 //Route::resource('posts', 'PostController', ['parameters'=> ['posts' => 'slug']])->only(['index', 'show']);
+Route::get('posts_load', 'PostController@loadPostsAjax')->name('load_posts_ajax');
 Route::resource('categories', 'CategoryController')->only(['index', 'show']);
 Route::resource('authors', 'AuthorController')->only(['index', 'show']);

@@ -8,7 +8,7 @@
             <div class="col-md-3 ml-auto">
                 <!-- <h3 class="footer-heading mb-4">Navigation</h3> -->
                 <ul class="list-unstyled float-left mr-5">
-                    <li><a href="/">Home</a></li>
+                    <li><a href="{{ route('home') }}">Home</a></li>
                     <li><a href="{{ route('categories.index') }}">Categories</a></li>
                     <li><a href="{{ route('authors.index') }}">Authors</a></li>
                     <li><a href="{{ route('api') }}">Api</a></li>

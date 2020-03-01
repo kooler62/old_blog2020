@@ -30,18 +30,35 @@
         </div>
     </div>
 @endforeach
-
-{{--    <button>More</button>--}}
+<div id="loaded_posts"></div>
 @endsection()
 
 @section('pagination')
+
+    <div class="row">
+        <button id="more_content_button" data-page="{{ (request()->page) ? request()->page : 1 }}" onclick="load_posts()">More</button>
+    </div>
+
     {{ $posts->links() }}
 @endsection()
 
 @section('footer_scripts')
-{{--    <script>--}}
-{{--       // при нажати на кнопку запрашивать аякз зарос которы2--}}
-{{--        //будет отдавать распарсиный html--}}
-{{--        //будет js рендерить--}}
-{{--    </script>--}}
+    <script>
+        function load_posts() {
+            let button = $("#more_content_button");
+            let page = $(button).attr('data-page');
+            $.ajax({
+                url: "{{ route('load_posts_ajax') }}?page=" + page,
+                type: "GET",
+                success: function(data) {
+                    if(data){
+                        $("#more_content_button").attr('data-page', +page+1);
+                        $(data).insertBefore($('#loaded_posts'));
+                    }else{
+                        button.remove();
+                    }
+                }
+            });
+        }
+    </script>
 @endsection()
