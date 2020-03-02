@@ -18,7 +18,18 @@ class CategoryController extends Controller {
         return view('short.categories', compact('categories'));
     }
 
-    public function show(Category $category) {
+    public function show($slug) {
+        $maybeInt = (int) $slug;
+
+        if((string) $slug == "$maybeInt"){
+            $category = Category::where('id', $slug)->whereActive(1)->firstOrFail();
+        }else{
+            $category = Category::where('slug', $slug)->whereActive(1)->firstOrFail();
+            if ($category){
+                return redirect()->route('short.categories.show', $category->id);
+            }
+        }
+
         $posts = Post::publicPosts()->where('category_id', $category->id)->paginate(15);
 
         SEOTools::setTitle($category->title);

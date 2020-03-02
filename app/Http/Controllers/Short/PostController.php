@@ -19,7 +19,17 @@ class PostController extends Controller {
         return view('short.posts', compact('posts'));
     }
 
-    public function show(Post $post) {
+    public function show($slug) {
+        $maybeInt = (int) $slug;
+
+        if((string) $slug == "$maybeInt"){
+            $post = Post::publicPost()->where('id', $slug)->firstOrFail();
+        }else{
+            $post = Post::publicPost()->where('slug', $slug)->firstOrFail();
+            if ($post){
+                return redirect()->route('short.posts.show', $post->id);
+            }
+        }
 
         SEOTools::setTitle($post->title);
         SEOTools::setDescription($post->seo_description);

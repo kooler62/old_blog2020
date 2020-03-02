@@ -18,7 +18,18 @@ class AuthorController extends Controller {
         return view('short.authors', compact('authors'));
     }
 
-    public function show(User $author) {
+    public function show($slug) {
+        $maybeInt = (int) $slug;
+
+        if((string) $slug == "$maybeInt"){
+            $author = User::findOrFail($slug);
+        }else{
+            $author = User::where('slug', $slug)->firstOrFail();
+            if ($author){
+                return redirect()->route('short.authors.show', $author->id);
+            }
+        }
+
         $posts = Post::publicPosts()->where('author_id', $author->id)->paginate(15);
 
         SEOTools::setTitle($author->name);
