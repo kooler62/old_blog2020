@@ -23,7 +23,7 @@
                                 </a>
                             </figure>
                             <span class="d-inline-block mt-1">By <a href="{{ route('authors.show', $post->author->slug) }}">{{ $post->author->name }} </a></span>
-                            <span>&nbsp;-&nbsp; {{ $post->created_at->diffForHumans() }} 👁 {{ $post->pretty_views }}</span>
+                            <span>&nbsp;-&nbsp; {{ $post->created_at->diffForHumans() }} 👁 {!! $post->pretty_views  !!}</span>
                         </div>
                     </div>
                 </div>

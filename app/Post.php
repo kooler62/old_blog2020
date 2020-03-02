@@ -28,10 +28,10 @@ class Post extends Model
     }
     public function getPrettyViewsAttribute()
     {
-        if ($this->views >= 100000000){ return round( $this->views/1000000, 0) .' M';}
-        elseif ($this->views >= 1000000){ return round( $this->views/1000000, 1) .' M';}
-        elseif ($this->views >= 100000){ return round( $this->views/1000, 0) .' k';}
-        elseif ($this->views >= 1000){ return round( $this->views/1000, 1) .' k';}
+        if ($this->views >= 100000000){ return round( $this->views/1000000, 0) .'&nbsp;M';}
+        elseif ($this->views >= 1000000){ return round( $this->views/1000000, 1) .'&nbsp;M';}
+        elseif ($this->views >= 100000){ return round( $this->views/1000, 0) .'&nbsp;k';}
+        elseif ($this->views >= 1000){ return round( $this->views/1000, 1) .'&nbsp;k';}
         else { return $this->views;}
     }
 
