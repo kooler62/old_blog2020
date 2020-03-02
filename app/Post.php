@@ -26,6 +26,14 @@ class Post extends Model
     {
         return $this->belongsTo(User::class,'author_id','id');
     }
+    public function getPrettyViewsAttribute()
+    {
+        if ($this->views >= 100000000){ return round( $this->views/1000000, 0) .' M';}
+        elseif ($this->views >= 1000000){ return round( $this->views/1000000, 1) .' M';}
+        elseif ($this->views >= 100000){ return round( $this->views/1000, 0) .' k';}
+        elseif ($this->views >= 1000){ return round( $this->views/1000, 1) .' k';}
+        else { return $this->views;}
+    }
 
     public function scopePublicPosts($query)
     {

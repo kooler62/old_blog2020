@@ -19,7 +19,7 @@
 
                     <div class="text">
                         <h2>{{ $mostViewedPosts[0]->title }}</h2>
-                        <span>👁 {{ $mostViewedPosts[0]->views }}</span>
+                        <span>👁 {{ $mostViewedPosts[0]->pretty_views }}</span>
                     </div>
                 </a>
             </div>
@@ -30,7 +30,7 @@
                     <span class="post-category text-white bg-{{ $mostViewedPosts[1]->category->class }}">{{ $mostViewedPosts[1]->category->title }}</span>
                     <div class="text text-sm">
                         <h2>{{ $mostViewedPosts[1]->title }}</h2>
-                        <span>👁 {{ $mostViewedPosts[1]->views }}</span>
+                        <span>👁 {{ $mostViewedPosts[1]->pretty_views }}</span>
                     </div>
                 </a>
 
@@ -39,14 +39,14 @@
                         <span class="post-category text-white bg-{{ $mostViewedPosts[2]->category->class }}">{{ $mostViewedPosts[2]->category->title }}</span>
                         <div class="text text-sm">
                             <h2>{{ $mostViewedPosts[2]->title }}</h2>
-                            <span>👁 {{ $mostViewedPosts[2]->views }}</span>
+                            <span>👁 {{ $mostViewedPosts[2]->pretty_views }}</span>
                         </div>
                     </a>
                     <a href="{{ route('posts.show', $mostViewedPosts[3]->slug) }}" class="hentry v-height img-2 ml-auto gradient" style="background-image: url('{{ $mostViewedPosts[3]->img }}');">
                         <span class="post-category text-white bg-{{ $mostViewedPosts[3]->category->class }}">{{ $mostViewedPosts[3]->category->title }}</span>
                         <div class="text text-sm">
                             <h2>{{ $mostViewedPosts[3]->title }}</h2>
-                            <span>👁 {{ $mostViewedPosts[3]->views }}</span>
+                            <span>👁 {{ $mostViewedPosts[3]->pretty_views }}</span>
                         </div>
                     </a>
                 </div>

@@ -21,7 +21,7 @@
                     <figure class="author-figure mb-0 mr-3 float-left">
                         <a href="{{ route('authors.show', $post->author->slug) }}"><img src="{{ $post->author->avatar }}" alt="Image" class="img-fluid"></a></figure>
                     <span class="d-inline-block mt-1">By <a href="{{ route('authors.show', $post->author->slug) }}">{{ $post->author->name }}</a></span>
-                    <span>- {{ $post->created_at->diffForHumans() }} | 👁&nbsp;{{ $post->views }}</span>
+                    <span>- {{ $post->created_at->diffForHumans() }} | 👁&nbsp;{{ $post->pretty_views }}</span>
                 </div>
 
                 <p>{{ $post->description }}</p>

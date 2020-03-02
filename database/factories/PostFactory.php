@@ -15,7 +15,7 @@ $factory->define(Post::class, function (Faker $faker) {
         'category_id'     => Category::all()->random()->id,
         'author_id'       => User::all()->random()->id,
         'active'          => rand(0, 1),
-        'views'          => rand(0, 111),
+        'views'          => rand(0, 100000000),
         'description'     => $faker->text(190),
         'seo_description' => $faker->text(190),
         'seo_keywords'    => $faker->text(190),
