@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Post;
+use App\{Post, Category, User};
+use Response;
 use Artesaos\SEOTools\Facades\SEOTools;
 
 class PostController extends Controller
@@ -48,4 +49,20 @@ class PostController extends Controller
         });
         return view('parts.load_posts_ajax', compact('posts'));
     }
+
+    public function sitemap(){
+        //ToDo экранирование символов &,',",<,>
+        $categories = cache()->remember('sitemap-categories', now()->addDays(3), function(){
+            return Category::whereActive(1)->select('slug', 'updated_at')->get();
+        });
+        $authors = cache()->remember('sitemap-authors', now()->addDays(3), function(){
+            return User::select('slug')->get();
+        });
+        $posts = cache()->remember('sitemap-posts', now()->addDays(3), function(){
+            return Post::whereActive(1)->select('slug', 'updated_at')->get();
+        });
+
+        return Response::view('sitemap', compact('categories', 'authors', 'posts'))->header('Content-Type', 'application/xml');
+    }
+
 }

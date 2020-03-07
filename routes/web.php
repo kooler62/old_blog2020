@@ -23,3 +23,5 @@ Route::resource('posts', 'PostController')->only(['index', 'show']);
 Route::get('posts_load', 'PostController@loadPostsAjax')->name('load_posts_ajax');
 Route::resource('categories', 'CategoryController')->only(['index', 'show']);
 Route::resource('authors', 'AuthorController')->only(['index', 'show']);
+Route::get('sitemap.xml', 'PostController@sitemap')->name('sitemap');
+
