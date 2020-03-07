@@ -165,7 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
-//        Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
+        Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -230,7 +230,7 @@ return [
         'Twitter'   => Artesaos\SEOTools\Facades\TwitterCard::class,
         'JsonLd'   => Artesaos\SEOTools\Facades\JsonLd::class,
         // or
-//        'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
+        'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
     ],
 
 ];
